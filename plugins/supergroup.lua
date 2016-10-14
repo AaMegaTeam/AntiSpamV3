@@ -179,11 +179,13 @@ local function lock_group_links(msg, data, target)
   end
   local group_link_lock = data[tostring(target)]['settings']['lock_link']
   if group_link_lock == 'yes' then
-    return 'Link posting is already locked'
+    local text '<i>Link posting is already locked</i>\n\n<b>You can Use /nlk links to Unlock it</b>'
+          return reply_msg(msg.id, text, ok_cb, false)
   else
     data[tostring(target)]['settings']['lock_link'] = 'yes'
     save_data(_config.moderation.data, data)
-    return 'Link posting has been locked'
+    local text '<i>Link posting has been locked</i>\n\n<b>Locked by:</b>@'..msg.from.username..''
+          return reply_msg(msg.id, text, ok_cb, false)
   end
 end
 
@@ -193,11 +195,13 @@ local function unlock_group_links(msg, data, target)
   end
   local group_link_lock = data[tostring(target)]['settings']['lock_link']
   if group_link_lock == 'no' then
-    return 'Link posting is not locked'
+    local text '<i>Link posting is not locked</i>\n\n<b>You can use /lk links to Lock it</b>'
+		return reply_msg(msg.id, text, ok_cb, false)
   else
     data[tostring(target)]['settings']['lock_link'] = 'no'
     save_data(_config.moderation.data, data)
-    return 'Link posting has been unlocked'
+    local text '<i>Link posting has been unlocked</i>\n\n<b>Unlocked by:</b>@'..msg.from.username..''
+		return reply_msg(msg.id, text, ok_cb, false)
   end
 end
 
@@ -207,11 +211,13 @@ local function lock_group_all(msg, data, target)
   end
   local group_all_lock = data[tostring(target)]['settings']['all']
   if group_all_lock == 'yes' then
-    return 'all setting is already locked'
+    local text '<i>all setting is already locked</i>\n\n<b>You can use /nlk all to Unlock it</b>'
+		return reply_msg(msg.id, text, ok_cb, false)
   else
     data[tostring(target)]['settings']['all'] = 'yes'
     save_data(_config.moderation.data, data)
-    return 'all setting has been locked'
+    local text '<i>all setting has been locked</i>\n\n<b>Locked by:</b>@'..msg.from.username..''
+		return reply_msg(msg.id, text, ok_cb, false)
   end
 end
 
@@ -221,11 +227,13 @@ local function unlock_group_all(msg, data, target)
   end
   local group_all_lock = data[tostring(target)]['settings']['all']
   if group_all_lock == 'no' then
-    return 'all setting is not locked'
+    local text '<i>all setting is not locked</i>\n\n<b>You can use /lk links to Lock it</b>'
+		return reply_msg(msg.id, text, ok_cb, false)
   else
     data[tostring(target)]['settings']['all'] = 'no'
     save_data(_config.moderation.data, data)
-    return 'all setting has been unlocked'
+    local text '<i>all setting has been unlocked</i>\n\n<b>Unlocked by</b>@'..msg.from.username..''
+		return reply_msg(msg.id, text, ok_cb, false)
   end
 end
 
@@ -235,11 +243,13 @@ local function lock_group_etehad(msg, data, target)
   end
   local group_etehad_lock = data[tostring(target)]['settings']['etehad']
   if group_etehad_lock == 'yes' then
-    return 'etehad setting is already locked'
+    local text '<i>etehad setting is already locked</i>\n\n<b>You can use /nlk etehad to lock it</b>'
+		return reply_msg(msg.id, text, ok_cb, false)
   else
     data[tostring(target)]['settings']['etehad'] = 'yes'
     save_data(_config.moderation.data, data)
-    return 'etehad setting has been locked'
+    local text '<i>etehad setting has been locked</i>\n\n<b>locked by:</b>@'..msg.from.username..''
+		return reply_msg(msg.id, text, ok_cb, false)
   end
 end
 
@@ -249,11 +259,13 @@ local function unlock_group_etehad(msg, data, target)
   end
   local group_etehad_lock = data[tostring(target)]['settings']['etehad']
   if group_etehad_lock == 'no' then
-    return 'etehad setting is not locked'
+    local text '<i>etehad setting is not locked</i>\n\n<b>you can use /lk etehad to lock it</b>'
+		return reply_msg(msg.id, text, ok_cb, false)
   else
     data[tostring(target)]['settings']['etehad'] = 'no'
     save_data(_config.moderation.data, data)
-    return 'etehad setting has been unlocked'
+    local text '<i>etehad setting has been unlocked</i>\n\n<b>unlocked by:</b>@'..msg.from.username..''
+		return reply_msg(msg.id, text, ok_cb, false)
   end
 end
 
@@ -263,11 +275,13 @@ local function lock_group_leave(msg, data, target)
   end
   local group_leave_lock = data[tostring(target)]['settings']['leave']
   if group_leave_lock == 'yes' then
-    return 'leave is already locked'
+    local text '<i>leave is already locked</i>\n\n<b>you can use /nlk leave to unlock it</b>'
+		return reply_msg(msg.id, text, ok_cb, false)
   else
     data[tostring(target)]['settings']['leave'] = 'yes'
     save_data(_config.moderation.data, data)
-    return 'leave has been locked'
+    local text '<i>leave has been locked</i>\n\n<b>locked by:</b>@'..msg.from.username..''
+		return reply_msg(msg.id, text, ok_cb, false)
   end
 end
 
@@ -277,11 +291,13 @@ local function unlock_group_leave(msg, data, target)
   end
   local group_leave_lock = data[tostring(target)]['settings']['leave']
   if group_leave_lock == 'no' then
-    return 'leave is not locked'
+    local text '<i>leave is not locked</i>\n\n<b>you can use /lk leave to lock it</b>'
+		return reply_msg(msg.id, text, ok_cb, false)
   else
     data[tostring(target)]['settings']['leave'] = 'no'
     save_data(_config.moderation.data, data)
-    return 'leave has been unlocked'
+    local text '<i>leave has been unlocked</i>\n\n<b>Unlocked by:</b>@'..msg.from.username..''
+		return reply_msg(msg.id, text, ok_cb, false)
   end
 end
 
@@ -291,11 +307,13 @@ local function lock_group_operator(msg, data, target)
   end
   local group_operator_lock = data[tostring(target)]['settings']['operator']
   if group_operator_lock == 'yes' then
-    return 'operator is already locked'
+    local text '<i>operator is already locked</i>\n\n<b>you can use /nlk operator to unlock it</b>'
+		return reply_msg(msg.id, text, ok_cb, false)
   else
     data[tostring(target)]['settings']['operator'] = 'yes'
     save_data(_config.moderation.data, data)
-    return 'operator has been locked'
+    local text '<i>operator has been locked</i>\n\n<b>Locked by:</b>@'..msg.from.username..''
+		return reply_msg(msg.id, text, ok_cb, false)
   end
 end
 
@@ -305,11 +323,13 @@ local function unlock_group_operator(msg, data, target)
   end
   local group_operator_lock = data[tostring(target)]['settings']['operator']
   if group_operator_lock == 'no' then
-    return 'operator is not locked'
+    local text '<i>operator is not locked</i>\n\n<b>you can use /lk operator to lock it</b>'
+		return reply_msg(msg.id, text, ok_cb, false)
   else
     data[tostring(target)]['settings']['operator'] = 'no'
     save_data(_config.moderation.data, data)
-    return 'operator has been unlocked'
+    local text '<i>operator has been unlocked</i>\n\n<b>unlocked by:</b>@'..msg.from.username..''
+		return reply_msg(msg.id, text, ok_cb, false)
   end
 end
 
@@ -319,11 +339,13 @@ local function lock_group_username(msg, data, target)
   end
   local group_username_lock = data[tostring(target)]['settings']['username']
   if group_username_lock == 'yes' then
-    return 'username is already locked'
+    local text '<i>username is already locked</i>\n\n<b>you can use /nlk username to unlock it</b>'
+		return reply_msg(msg.id, text, ok_cb, false)
   else
     data[tostring(target)]['settings']['username'] = 'yes'
     save_data(_config.moderation.data, data)
-    return 'username has been locked'
+    local text '<i>username has been locked</i>\n\n<b>locked by:</b>@'..msg.from.username..''
+		return reply_msg(msg.id, text, ok_cb, false)
   end
 end
 
@@ -333,11 +355,13 @@ local function unlock_group_username(msg, data, target)
   end
   local group_username_lock = data[tostring(target)]['settings']['username']
   if group_username_lock == 'no' then
-    return 'username is not locked'
+    local text '<i>username is not locked</i>\n\n<b>you can use /lk username to lock it</b>'
+		return reply_msg(msg.id, text, ok_cb, false)
   else
     data[tostring(target)]['settings']['username'] = 'no'
     save_data(_config.moderation.data, data)
-    return 'username has been unlocked'
+    local text '<i>username has been unlocked</i>\n\n<b>unlocked by:</b>@'..msg.from.username..''
+		return reply_msg(msg.id, text, ok_cb, false)
   end
 end
 
@@ -347,11 +371,13 @@ local function lock_group_media(msg, data, target)
   end
   local group_media_lock = data[tostring(target)]['settings']['media']
   if group_media_lock == 'yes' then
-    return 'media is already locked'
+    local text '<i>media is already locked</i>\n\n<b>you can use /nlk media to unlock it</b>'
+		return reply_msg(msg.id, text, ok_cb, false)
   else
     data[tostring(target)]['settings']['media'] = 'yes'
     save_data(_config.moderation.data, data)
-    return 'media has been locked'
+    local text '<i>media has been locked</i>\n\n<b>locked by:</b>@'..msg.from.username..'
+		return reply_msg(msg.id, text, ok_cb, false)'
   end
 end
 
@@ -361,11 +387,13 @@ local function unlock_group_media(msg, data, target)
   end
   local group_media_lock = data[tostring(target)]['settings']['media']
   if group_media_lock == 'no' then
-    return 'media is not locked'
+    local text '<i>media is not locked</i>\n\n<b>you can use /lk media to lock it</b>'
+		return reply_msg(msg.id, text, ok_cb, false)
   else
     data[tostring(target)]['settings']['media'] = 'no'
     save_data(_config.moderation.data, data)
-    return 'media has been unlocked'
+    local text '<i>media has been unlocked</i>\n\n<b>unlocked by:</b>@'..msg.from.username..''
+		return reply_msg(msg.id, text, ok_cb, false)
   end
 end
 
@@ -375,11 +403,13 @@ local function lock_group_fosh(msg, data, target)
   end
   local group_fosh_lock = data[tostring(target)]['settings']['fosh']
   if group_fosh_lock == 'yes' then
-    return 'fosh is already locked'
+    local text '<i>fosh is already locked</i>\n\n<b>you can use /nlk fosh to unlock it<b>'
+		return reply_msg(msg.id, text, ok_cb, false)
   else
     data[tostring(target)]['settings']['fosh'] = 'yes'
     save_data(_config.moderation.data, data)
-    return 'fosh has been locked'
+    local text '<i>fosh has been locked</i>\n\n<b>locked by:</b>@'..msg.from.username..''
+		return reply_msg(msg.id, text, ok_cb, false)
   end
 end
 
@@ -389,11 +419,13 @@ local function unlock_group_fosh(msg, data, target)
   end
   local group_fosh_lock = data[tostring(target)]['settings']['fosh']
   if group_fosh_lock == 'no' then
-    return 'fosh is not locked'
+    local text '<i>fosh is not locked</i>\n\n<b>you can use /lk fosh to lock it</b>'
+		return reply_msg(msg.id, text, ok_cb, false)
   else
     data[tostring(target)]['settings']['fosh'] = 'no'
     save_data(_config.moderation.data, data)
-    return 'fosh has been unlocked'
+    local text '<i>fosh has been unlocked</i>\n\n<b>unlocked by:</b>@'..msg.from.username..''
+		return reply_msg(msg.id, text, ok_cb, false)
   end
 end
 
@@ -403,11 +435,13 @@ local function lock_group_join(msg, data, target)
   end
   local group_join_lock = data[tostring(target)]['settings']['join']
   if group_join_lock == 'yes' then
-    return 'join is already locked'
+    local text '<i>join is already locked</i>\n\n<b>you can use /nlk join to unlock it</b>'
+		return reply_msg(msg.id, text, ok_cb, false)
   else
     data[tostring(target)]['settings']['join'] = 'yes'
     save_data(_config.moderation.data, data)
-    return 'join has been locked'
+    local text '<i>join has been locked</i>\n\n<b>locked by</b>@'..msg.from.username..''
+		return reply_msg(msg.id, text, ok_cb, false)
   end
 end
 
@@ -417,11 +451,13 @@ local function unlock_group_join(msg, data, target)
   end
   local group_join_lock = data[tostring(target)]['settings']['join']
   if group_join_lock == 'no' then
-    return 'join is not locked'
+    local text '<i>join is not locked</i>\n\n<b>you can use /lk join to lock it</b>'
+		return reply_msg(msg.id, text, ok_cb, false)
   else
     data[tostring(target)]['settings']['join'] = 'no'
     save_data(_config.moderation.data, data)
-    return 'join has been unlocked'
+    local text '<i>join has been unlocked</i>\n\n<b>unlocked by:</b>@'..msg.from.username..''
+		return reply_msg(msg.id, text, ok_cb, false)
   end
 end
 
@@ -431,11 +467,13 @@ local function lock_group_english(msg, data, target)
   end
   local group_english_lock = data[tostring(target)]['settings']['english']
   if group_english_lock == 'yes' then
-    return 'english is already locked'
+    local text '<i>english is already locked</i>\n\n<b>you can use /nlk english to unlock it</b>'
+		return reply_msg(msg.id, text, ok_cb, false)
   else
     data[tostring(target)]['settings']['english'] = 'yes'
     save_data(_config.moderation.data, data)
-    return 'english has been locked'
+    local text '<i>english has been locked</i>\n\n<b>locked by:</b>@'..msg.from.username..''
+		return reply_msg(msg.id, text, ok_cb, false)
   end
 end
 
@@ -445,11 +483,13 @@ local function unlock_group_english(msg, data, target)
   end
   local group_english_lock = data[tostring(target)]['settings']['english']
   if group_english_lock == 'no' then
-    return 'english is not locked'
+    local text '<i>english is not locked</i>\n\n<b>you can use /lk english to lock it</b>'
+		return reply_msg(msg.id, text, ok_cb, false)
   else
     data[tostring(target)]['settings']['english'] = 'no'
     save_data(_config.moderation.data, data)
-    return 'english has been unlocked'
+    local text '<i>english has been unlocked</i>\n\n<b>unlocked by:</b>@'..msg.from.username..''
+		return reply_msg(msg.id, text, ok_cb, false)
   end
 end
 
@@ -459,11 +499,13 @@ local function lock_group_emoji(msg, data, target)
   end
   local group_emoji_lock = data[tostring(target)]['settings']['emoji']
   if group_emoji_lock == 'yes' then
-    return 'emoji is already locked'
+    local text '<i>emoji is already locked</i>\n\n<b>you can use /nlk emoji to unlock it</b>'
+		return reply_msg(msg.id, text, ok_cb, false)
   else
     data[tostring(target)]['settings']['emoji'] = 'yes'
     save_data(_config.moderation.data, data)
-    return 'emoji has been locked'
+    local text '<i>emoji has been locked</i>\n\n<b>locked by:</b>@'..msg.from.username..''
+		return reply_msg(msg.id, text, ok_cb, false)
   end
 end
 
@@ -473,11 +515,13 @@ local function unlock_group_emoji(msg, data, target)
   end
   local group_emoji_lock = data[tostring(target)]['settings']['emoji']
   if group_emoji_lock == 'no' then
-    return 'emoji is not locked'
+    local text '<i>emoji is not locked</i>\n\n<b>you can use /lk emoji to lock it</b>'
+		return reply_msg(msg.id, text, ok_cb, false)
   else
     data[tostring(target)]['settings']['emoji'] = 'no'
     save_data(_config.moderation.data, data)
-    return 'emoji has been unlocked'
+    local text '<i>emoji has been unlocked</i>\n\n<b>unlocked by:</b>@'..msg.from.username..''
+		return reply_msg(msg.id, text, ok_cb, false)
   end
 end
 
@@ -487,11 +531,13 @@ local function lock_group_tag(msg, data, target)
   end
   local group_tag_lock = data[tostring(target)]['settings']['tag']
   if group_tag_lock == 'yes' then
-    return 'tag is already locked'
+    local text '<i>tag is already locked</i>\n\n<b>you can use /nlk tag to unlock it</b>'
+		return reply_msg(msg.id, text, ok_cb, false)
   else
     data[tostring(target)]['settings']['tag'] = 'yes'
     save_data(_config.moderation.data, data)
-    return 'tag has been locked'
+    local text '<i>tag has been locked</i>\n\n<b>locked by:</b>@'..msg.from.username..''
+		return reply_msg(msg.id, text, ok_cb, false)
   end
 end
 
@@ -501,11 +547,13 @@ local function unlock_group_tag(msg, data, target)
   end
   local group_tag_lock = data[tostring(target)]['settings']['tag']
   if group_tag_lock == 'no' then
-    return 'tag is not locked'
+    local text '<i>tag is not locked</i>\n\n<b>you can use /lk tag to lock it</b>'
+		return reply_msg(msg.id, text, ok_cb, false)
   else
     data[tostring(target)]['settings']['tag'] = 'no'
     save_data(_config.moderation.data, data)
-    return 'tag has been unlocked'
+    local text '<i>tag has been unlocked</i>\n\n<b>unlocked by:</b>@'..msg.from.username..''
+		return reply_msg(msg.id, text, ok_cb, false)
   end
 end
 
@@ -532,12 +580,14 @@ local function lock_group_spam(msg, data, target)
   end
   local group_spam_lock = data[tostring(target)]['settings']['lock_spam']
   if group_spam_lock == 'yes' then
-    return 'SuperGroup spam is already locked'
+    local text '<i>SuperGroup spam is already locked</i>\n\nyou can use /nlk soam to unlock it(just owner)</b>'
+		return reply_msg(msg.id, text, ok_cb, false)
   else
     data[tostring(target)]['settings']['lock_spam'] = 'yes'
     save_data(_config.moderation.data, data)
-    return 'SuperGroup spam has been locked'
-  end
+    local text '<i>SuperGroup spam has been locked</i>\n\n<b>locked by:,/b>@'..msg.from.username..''
+		return reply_msg(msg.id, text, ok_cb, false)
+  end<i>
 end
 
 local function unlock_group_spam(msg, data, target)
@@ -546,11 +596,13 @@ local function unlock_group_spam(msg, data, target)
   end
   local group_spam_lock = data[tostring(target)]['settings']['lock_spam']
   if group_spam_lock == 'no' then
-    return 'SuperGroup spam is not locked'
+    local text '<i>SuperGroup spam is not locked</i>\n\n<b>you can use /lk spam to lock it(owner only)</b>'
+		return reply_msg(msg.id, text, ok_cb, false)
   else
     data[tostring(target)]['settings']['lock_spam'] = 'no'
     save_data(_config.moderation.data, data)
-    return 'SuperGroup spam has been unlocked'
+    local text '<i>SuperGroup spam has been unlocked</i>\n\n<b>unlocked by:</b>@'..msg.from.username..''
+		return reply_msg(msg.id, text, ok_cb, false)
   end
 end
 
@@ -560,11 +612,13 @@ local function lock_group_flood(msg, data, target)
   end
   local group_flood_lock = data[tostring(target)]['settings']['flood']
   if group_flood_lock == 'yes' then
-    return 'Flood is already locked'
+    local text '<i>Flood is already locked</i>\n\n<b>you can use /nlk flood to unlock it</b>'
+		return reply_msg(msg.id, text, ok_cb, false)
   else
     data[tostring(target)]['settings']['flood'] = 'yes'
     save_data(_config.moderation.data, data)
-    return 'Flood has been locked'
+    local text '<i>Flood has been locked</i>\n\n<b>locked by:</b>@'..msg.from.username..''
+		return reply_msg(msg.id, text, ok_cb, false)
   end
 end
 
@@ -574,11 +628,13 @@ local function unlock_group_flood(msg, data, target)
   end
   local group_flood_lock = data[tostring(target)]['settings']['flood']
   if group_flood_lock == 'no' then
-    return 'Flood is not locked'
+    local text '<i>Flood is not locked</i>\n\n<b>you can use /lk flood to lock it</b>'
+		return reply_msg(msg.id, text, ok_cb, false)
   else
     data[tostring(target)]['settings']['flood'] = 'no'
     save_data(_config.moderation.data, data)
-    return 'Flood has been unlocked'
+    local text '<i>Flood has been unlocked</i>\n\n<b>unlocked by:,/b>@'..msg.from.username..''
+		return reply_msg(msg.id, text, ok_cb, false)
   end
 end
 
@@ -588,11 +644,13 @@ local function lock_group_arabic(msg, data, target)
   end
   local group_arabic_lock = data[tostring(target)]['settings']['lock_arabic']
   if group_arabic_lock == 'yes' then
-    return 'Arabic is already locked'
+    local text '<i>Arabic is already locked</i>\n\n<b>you can use \nlk arabic to unlock it</b>'
+		return reply_msg(msg.id, text, ok_cb, false)
   else
     data[tostring(target)]['settings']['lock_arabic'] = 'yes'
     save_data(_config.moderation.data, data)
-    return 'Arabic has been locked'
+    local text '<i>Arabic has been locked</i>\n\n<b>locked by:</b>@'..msg.from.username..''
+		return reply_msg(msg.id, text, ok_cb, false)
   end
 end
 
@@ -602,11 +660,13 @@ local function unlock_group_arabic(msg, data, target)
   end
   local group_arabic_lock = data[tostring(target)]['settings']['lock_arabic']
   if group_arabic_lock == 'no' then
-    return 'Arabic/Persian is already unlocked'
+    local text '<i>Arabic/Persian is already unlocked</i>\n\n<b>you can use /lk arabic to lock it</b>'
+		return reply_msg(msg.id, text, ok_cb, false)
   else
     data[tostring(target)]['settings']['lock_arabic'] = 'no'
     save_data(_config.moderation.data, data)
-    return 'Arabic/Persian has been unlocked'
+    local text '<i>Arabic/Persian has been unlocked</i>\n\n<b>unlocked by:</b>@'..msg.from.username..''
+		return reply_msg(msg.id, text, ok_cb, false)
   end
 end
 
@@ -617,12 +677,14 @@ local function lock_group_membermod(msg, data, target)
   end
   local group_member_lock = data[tostring(target)]['settings']['lock_member']
   if group_member_lock == 'yes' then
-    return 'SuperGroup members are already locked'
+    local text '<i>SuperGroup members are already locked</i>\n\n<b>you can use /nlk member to unlock it</b>'
+		return reply_msg(msg.id, text, ok_cb, false)
   else
     data[tostring(target)]['settings']['lock_member'] = 'yes'
     save_data(_config.moderation.data, data)
   end
-  return 'SuperGroup members has been locked'
+  local text '<i>SuperGroup members has been locked</i>\n\n<b>locked by:</b>@'..msg.from.username..''
+	return reply_msg(msg.id, text, ok_cb, false)
 end
 
 local function unlock_group_membermod(msg, data, target)
@@ -631,11 +693,13 @@ local function unlock_group_membermod(msg, data, target)
   end
   local group_member_lock = data[tostring(target)]['settings']['lock_member']
   if group_member_lock == 'no' then
-    return 'SuperGroup members are not locked'
+    local text '<i>SuperGroup members are not locked</i>\n\n<b>you can use /lk member to lock it</b>'
+		return reply_msg(msg.id, text, ok_cb, false)
   else
     data[tostring(target)]['settings']['lock_member'] = 'no'
     save_data(_config.moderation.data, data)
-    return 'SuperGroup members has been unlocked'
+    local text '<i>SuperGroup members has been unlocked</i>\n\n<b>unlocked by:,/b>@'..msg.from.username..''
+		return reply_msg(msg.id, text, ok_cb, false)
   end
 end
 
@@ -645,11 +709,13 @@ local function lock_group_rtl(msg, data, target)
   end
   local group_rtl_lock = data[tostring(target)]['settings']['lock_rtl']
   if group_rtl_lock == 'yes' then
-    return 'RTl is already locked'
+    local text '<i>RTl is already locked</i>\n\n<b>you can use /nlk RTL to lock it</b>'
+		return reply_msg(msg.id, text, ok_cb, false)
   else
     data[tostring(target)]['settings']['lock_rtl'] = 'yes'
     save_data(_config.moderation.data, data)
-    return 'RTL has been locked'
+    local text '<i>RTL has been locked</i>\n\n<b>locked by:</b>@'..msg.from.username..''
+		return reply_msg(msg.id, text, ok_cb, false)
   end
 end
 
@@ -659,11 +725,13 @@ local function unlock_group_rtl(msg, data, target)
   end
   local group_rtl_lock = data[tostring(target)]['settings']['lock_rtl']
   if group_rtl_lock == 'no' then
-    return 'RTL is already unlocked'
+    local text '<i>RTL is already unlocked</i>\n\n<b>you can use /lk RTl to lock it</b>'
+		return reply_msg(msg.id, text, ok_cb, false)
   else
     data[tostring(target)]['settings']['lock_rtl'] = 'no'
     save_data(_config.moderation.data, data)
-    return 'RTL has been unlocked'
+    local text '<i>RTL has been unlocked</i>\n\n<b>unlocked by:</b>@'..msg.from.username..''
+		return reply_msg(msg.id, text, ok_cb, false)
   end
 end
 
@@ -673,11 +741,13 @@ local function lock_group_tgservice(msg, data, target)
   end
   local group_tgservice_lock = data[tostring(target)]['settings']['lock_tgservice']
   if group_tgservice_lock == 'yes' then
-    return 'Tgservice is already locked'
+    local text '<i>Tgservice is already locked</i>\n\n<b>you can use /nlk TGservice to unlock it</b>'
+		return reply_msg(msg.id, text, ok_cb, false)
   else
     data[tostring(target)]['settings']['lock_tgservice'] = 'yes'
     save_data(_config.moderation.data, data)
-    return 'Tgservice has been locked'
+    local text '<i>Tgservice has been locked</i>\n\n<b>locked by:</b>@'..msg.from.username..''
+		return reply_msg(msg.id, text, ok_cb, false)
   end
 end
 
@@ -687,11 +757,13 @@ local function unlock_group_tgservice(msg, data, target)
   end
   local group_tgservice_lock = data[tostring(target)]['settings']['lock_tgservice']
   if group_tgservice_lock == 'no' then
-    return 'TgService Is Not Locked!'
+    local text '<i>TgService Is Not Locked!</i.\n\n<b>you can use /lk TGservice to lock it</b>'
+		return reply_msg(msg.id, text, ok_cb, false)
   else
     data[tostring(target)]['settings']['lock_tgservice'] = 'no'
     save_data(_config.moderation.data, data)
-    return 'Tgservice has been unlocked'
+    local text '<i>Tgservice has been unlocked</i>\n\n<b>unlocked by:</b>@'..msg.from.username..''
+		return reply_msg(msg.id, text, ok_cb, false)
   end
 end
 
@@ -701,11 +773,13 @@ local function lock_group_sticker(msg, data, target)
   end
   local group_sticker_lock = data[tostring(target)]['settings']['lock_sticker']
   if group_sticker_lock == 'yes' then
-    return 'Sticker posting is already locked'
+    local text '<i>Sticker posting is already locked</i>\n\n<b>you can use /nlk sticker to unlock it</b>'
+		return reply_msg(msg.id, text, ok_cb, false)
   else
     data[tostring(target)]['settings']['lock_sticker'] = 'yes'
     save_data(_config.moderation.data, data)
-    return 'Sticker posting has been locked'
+    local text '<i>Sticker posting has been locked</i>\n\n<b>locked by:,/b>@'..msg.from.username..''
+		return reply_msg(msg.id, text, ok_cb, false)
   end
 end
 
@@ -715,11 +789,13 @@ local function unlock_group_sticker(msg, data, target)
   end
   local group_sticker_lock = data[tostring(target)]['settings']['lock_sticker']
   if group_sticker_lock == 'no' then
-    return 'Sticker posting is already unlocked'
+    local text '<i>Sticker posting is already unlocked</i>\n\n<b>you can use /lk sticker to lock it</b>'
+		return reply_msg(msg.id, text, ok_cb, false)
   else
     data[tostring(target)]['settings']['lock_sticker'] = 'no'
     save_data(_config.moderation.data, data)
-    return 'Sticker posting has been unlocked'
+    local text '<i>Sticker posting has been unlocked</i>\n\n<b>unlocked by:,/b>@'..msg.from.username..''
+		return reply_msg(msg.id, text, ok_cb, false)
   end
 end
 
@@ -729,11 +805,13 @@ local function lock_group_bots(msg, data, target)
   end
   local group_bots_lock = data[tostring(target)]['settings']['lock_bots']
   if group_bots_lock == 'yes' then
-    return 'Bots protection is already enabled'
+    local text '<i>Bots protection is already enabled</i>\n\n<b>you can use /nlk bots to unlock it</b>'
+		return reply_msg(msg.id, text, ok_cb, false)
   else
     data[tostring(target)]['settings']['lock_bots'] = 'yes'
     save_data(_config.moderation.data, data)
-    return 'Bots protection has been enabled'
+    local text '<i>Bots protection has been enabled</i>\n\n<b>enabled by:</b>@'..msg.from.username..''
+		return reply_msg(msg.id, text, ok_cb, false)
   end
 end
 
@@ -743,11 +821,13 @@ local function unlock_group_bots(msg, data, target)
   end
   local group_bots_lock = data[tostring(target)]['settings']['lock_bots']
   if group_bots_lock == 'no' then
-    return 'Bots protection is already disabled'
+    local text '<i>Bots protection is already disabled</i>\n\n<b>you can use /lk bots to lock it</b>'
+		return reply_msg(msg.id, text, ok_cb, false)
   else
     data[tostring(target)]['settings']['lock_bots'] = 'no'
     save_data(_config.moderation.data, data)
-    return 'Bots protection has been disabled'
+    local text '<i>Bots protection has been disabled</i>\n\n<b>disabled by:</b>@'..msg.from.username..''
+		return reply_msg(msg.id, text, ok_cb, false)
   end
 end
 
@@ -757,11 +837,13 @@ local function lock_group_contacts(msg, data, target)
   end
   local group_rtl_lock = data[tostring(target)]['settings']['lock_contacts']
   if group_contacts_lock == 'yes' then
-    return 'Contact posting is already locked'
+    local text '<i>Contact posting is already locked</i>\n\n<b>you can use /nlk contacts to unlock it</b>'
+		return reply_msg(msg.id, text, ok_cb, false)
   else
     data[tostring(target)]['settings']['lock_contacts'] = 'yes'
     save_data(_config.moderation.data, data)
-    return 'Contact posting has been locked'
+    local text '<i>Contact posting has been locked</i>\n\n<b>locked by:</b>@'..msg.from.username..''
+		return reply_msg(msg.id, text, ok_cb, false)
   end
 end
 
@@ -771,11 +853,13 @@ local function unlock_group_contacts(msg, data, target)
   end
   local group_contacts_lock = data[tostring(target)]['settings']['lock_contacts']
   if group_contacts_lock == 'no' then
-    return 'Contact posting is already unlocked'
+    local text '<i>Contact posting is already unlocked</i>\n\n<b>you can use /lk contacts yo lock it</b>'
+		return reply_msg(msg.id, text, ok_cb, false)
   else
     data[tostring(target)]['settings']['lock_contacts'] = 'no'
     save_data(_config.moderation.data, data)
-    return 'Contact posting has been unlocked'
+    local text '<i>Contact posting has been unlocked</i>\n\n<b>unlocked by:</b>@'..msg.from.username..''
+		return reply_msg(msg.id, text, ok_cb, false)
   end
 end
 
@@ -785,11 +869,13 @@ local function enable_strict_rules(msg, data, target)
   end
   local group_strict_lock = data[tostring(target)]['settings']['strict']
   if group_strict_lock == 'yes' then
-    return 'Settings are already strictly enforced'
+    local text '<i>Settings are already strictly enforced</i>'
+		return reply_msg(msg.id, text, ok_cb, false)
   else
     data[tostring(target)]['settings']['strict'] = 'yes'
     save_data(_config.moderation.data, data)
-    return 'Settings will be strictly enforced'
+    local text '<b>Settings will be strictly enforced</b>'
+		return reply_msg(msg.id, text, ok_cb, false)
   end
 end
 
@@ -799,11 +885,13 @@ local function disable_strict_rules(msg, data, target)
   end
   local group_strict_lock = data[tostring(target)]['settings']['strict']
   if group_strict_lock == 'no' then
-    return 'Settings are not strictly enforced'
+    local text '<i>Settings are not strictly enforced</i>'
+		return reply_msg(msg.id, text, ok_cb, false)
   else
     data[tostring(target)]['settings']['strict'] = 'no'
     save_data(_config.moderation.data, data)
-    return 'Settings will not be strictly enforced'
+    local text '<b>Settings will not be strictly enforced</b>'
+		return reply_msg(msg.id, text, ok_cb, false)
   end
 end
 --End supergroup locks
@@ -816,7 +904,8 @@ local function set_rulesmod(msg, data, target)
   local data_cat = 'rules'
   data[tostring(target)][data_cat] = rules
   save_data(_config.moderation.data, data)
-  return 'SuperGroup rules set'
+  local text '<b>SuperGroup rules set</b>\n\n<i>Setted by:,/i>@'..msg.from.username..''
+	return reply_msg(msg.id, text, ok_cb, false)
 end
 
 --'Get supergroup rules' function
@@ -978,8 +1067,8 @@ function show_supergroup_settingsmod(msg, target)
   	mute_fwd = 'no'
   end
   local settings = data[tostring(target)]['settings']
-  local text = "____________________\n⚙SuperGroup settings⚙:⬇️\n____________________\n>Lock links : "..settings.lock_link.."\n>Lock contacts: "..settings.lock_contacts.."\n>Lock flood: "..settings.flood.."\n>Flood sensitivity : "..NUM_MSG_MAX.."\n>Lock spam: "..settings.lock_spam.."\n>Lock Arabic: "..settings.lock_arabic.."\n>Lock Member: "..settings.lock_member.."\n>Lock RTL: "..settings.lock_rtl.."\n>Lock Tgservice: "..settings.lock_tgservice.."\n>Lock sticker: "..settings.lock_sticker.."\n>Lock tag(#): "..settings.tag.."\n>Lock emoji: "..settings.emoji.."\n>Lock english: "..settings.english.."\n>Lock fwd(forward): "..mute_fwd.."\n>Lock reply: "..mute_reply.."\n>Lock join: "..settings.join.."\n>Lock username(@): "..settings.username.."\n>Lock media: "..settings.media.."\n>Lock fosh: "..settings.fosh.."\n>Lock leave: "..settings.leave.."\n>Lock bots: "..bots_protection.."\n>Lock operator: "..settings.operator.."\n____________________\n⚙Easy Sweet&Faster Switch⚙:⬇️\n____________________\n>Switch Model Etehad: "..settings.etehad.."\n>Lock all: "..settings.all.."\n____________________\nℹ️About Groupℹ️:⬇️\n____________________\n>group type: "..gp_type.."\n>Public: "..settings.public.."\n>Strict settings: "..settings.strict.."\n____________________\n>>bot version : v2.9<<\n>>>👑MeGa Maximus👑<<<\n>>@pedaret<<"
-  return text
+  local text "<b>SuperGroup settings</b>:\n____________________\n<i>Ads Settings</i>\n\n<b>Lock links :</b> "..settings.lock_link.."\n<b>Lock contacts:</b> "..settings.lock_contacts.."\n<b>Lock tag:</b>"..settings.tag.."\n<b>Lock forward(fwd)</b>"..mute_fwd.."\n__________________________________________\n<i>Communication locks:</i>\n\n<b>Lock flood:</b> "..settings.flood.."\n<b>Flood sensitivity :</b> "..NUM_MSG_MAX.."\n<b>Lock spam:</b> "..settings.lock_spam.."\n<b>Lock Arabic:</b> "..settings.lock_arabic.."\n<b>Lock Member:</b> "..settings.lock_member.."\n<b>Lock RTL:</b> "..settings.lock_rtl.."\n_________________________________\n<i>Other Locks:</i>\n\n<b>Lock Tgservice:</b> "..settings.lock_tgservice.."\n<b>Lock sticker:</b> "..settings.lock_sticker.."\n<b>Lock emoji:</b> "..settings.emoji.."\n<b>Lock english:</b> "..settings.english.."\n<b>Lock reply:</b> "..mute_reply.."\n<b>Lock join:</b> "..settings.join.."\n<b>Lock username(@):</b> "..settings.username.."\n<b>Lock media:</b> "..settings.media.."\n<b>Lock fosh:</b> "..settings.fosh.."\n<b>Lock leave:</b> "..settings.leave.."\n<b>Lock bots:</b> "..bots_protection.."\n<b>Lock operator:</b> "..settings.operator.."\n____________________\nSwitch Model Etehad: "..settings.etehad.."\n>Lock all: "..settings.all.."\n____________________\n<b>About Group:</b>\n____________________\n>group type: "..gp_type.."\n>Public: "..settings.public.."\n>Strict settings: "..settings.strict.."\n__________________\n<i>Bot version</i>:5.9 \n <b>Sudo & Developer</b>:@teshne"
+  return reply_msg(msg.id, text, ok_cb, false)
 end
 
 local function promote_admin(receiver, member_username, user_id)
@@ -2057,7 +2146,7 @@ local function run(msg, matches)
 			end
 		end
 
-		if matches[1] == 'lock' and is_momod(msg) then
+		if matches[1] == 'lk' and is_momod(msg) then
 			local target = msg.to.id
 			     if matches[2] == 'all' then
       	local safemode ={
@@ -2189,7 +2278,7 @@ local function run(msg, matches)
 			end
 		end
 
-		if matches[1] == 'unlock' and is_momod(msg) then
+		if matches[1] == 'nlk' and is_momod(msg) then
 			local target = msg.to.id
 			     if matches[2] == 'all' then
       	local dsafemode ={
@@ -2549,7 +2638,7 @@ local function run(msg, matches)
 		end
 
 		if matches[1] == 'help' and not is_owner(msg) then
-			text = "Message /superhelp to @antispam_shield in private for SuperGroup help"
+			text = "<b>Message /superhelp in private</b>"
 			reply_msg(msg.id, text, ok_cb, false)
 		elseif matches[1] == 'help' and is_owner(msg) then
 			local name_log = user_print_name(msg.from)
@@ -2654,8 +2743,8 @@ return {
 	"^[#!/]([Ss]etphoto)$",
 	"^[#!/]([Ss]etusername) (.*)$",
 	"^[#!/]([Dd]el)$",
-	"^[#!/]([Ll]ock) (.*)$",
-	"^[#!/]([Uu]nlock) (.*)$",
+	"^[#!/]([Ll]k) (.*)$",
+	"^[#!/]([Nn]lk) (.*)$",
 	"^[#!/]([Mm]ute) ([^%s]+)$",
 	"^[#!/]([Uu]nmute) ([^%s]+)$",
 	"^[#!/]([Ss]ilent)$",
